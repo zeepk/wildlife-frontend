@@ -10,6 +10,7 @@ import { bugs } from '../data_files/bugs.json';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Checkbox from '@material-ui/core/Checkbox';
 import '../styles/Dashboard.css';
+import bells_image from '../images/bells.png'; // Tell webpack this JS file uses this image
 
 // displays a green check if the month is set to 1 instead of 0
 const month_display = (is_available) => {
@@ -17,6 +18,17 @@ const month_display = (is_available) => {
 		return <CheckCircleIcon style={{ color: 'green' }} />;
 	}
 };
+
+// const rarity_display = (rarity) => {
+// 	if (rarity === '1') {
+// 		return 'Common';
+// 	} else if (rarity === '2') {
+// 		return '';
+// 	} else if (rarity === '3') {
+// 	} else if (rarity === '4') {
+// 	} else if (rarity === '5') {
+// 	}
+// };
 
 // checks local storage to populate checkboxes
 const is_checked = (name) => {
@@ -63,10 +75,20 @@ class Dashboard extends Component {
 	};
 
 	render() {
+		const date = new Date();
+		const month_id = date.getMonth();
+		const color = 'rgb(173, 219, 240)';
 		const bugs_rows = bugs.map((bug) => (
 			<TableRow key={bug.id}>
 				<TableCell component="th" scope="row">
 					{bug.name}
+				</TableCell>
+				<TableCell component="th" scope="row">
+					<img
+						className="bug-image"
+						src={`http://acnhapi.com/icons/bugs/${bug.id}`}
+						alt="Price"
+					/>
 				</TableCell>
 				<TableCell align="left">
 					<Checkbox
@@ -78,18 +100,78 @@ class Dashboard extends Component {
 				<TableCell align="left">{bug.rarity}</TableCell>
 				<TableCell align="left">{bug.price}</TableCell>
 				<TableCell align="left">{bug.location}</TableCell>
-				<TableCell align="left">{month_display(bug.january)}</TableCell>
-				<TableCell align="left">{month_display(bug.february)}</TableCell>
-				<TableCell align="left">{month_display(bug.march)}</TableCell>
-				<TableCell align="left">{month_display(bug.april)}</TableCell>
-				<TableCell align="left">{month_display(bug.may)}</TableCell>
-				<TableCell align="left">{month_display(bug.june)}</TableCell>
-				<TableCell align="left">{month_display(bug.july)}</TableCell>
-				<TableCell align="left">{month_display(bug.august)}</TableCell>
-				<TableCell align="left">{month_display(bug.september)}</TableCell>
-				<TableCell align="left">{month_display(bug.october)}</TableCell>
-				<TableCell align="left">{month_display(bug.november)}</TableCell>
-				<TableCell align="left">{month_display(bug.december)}</TableCell>
+				<TableCell
+					style={month_id === 0 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.january)}
+				</TableCell>
+				<TableCell
+					style={month_id === 1 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.february)}
+				</TableCell>
+				<TableCell
+					style={month_id === 2 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.march)}
+				</TableCell>
+				<TableCell
+					style={month_id === 3 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.april)}
+				</TableCell>
+				<TableCell
+					style={month_id === 4 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.may)}
+				</TableCell>
+				<TableCell
+					style={month_id === 5 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.june)}
+				</TableCell>
+				<TableCell
+					style={month_id === 6 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.july)}
+				</TableCell>
+				<TableCell
+					style={month_id === 7 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.august)}
+				</TableCell>
+				<TableCell
+					style={month_id === 8 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.september)}
+				</TableCell>
+				<TableCell
+					style={month_id === 9 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.october)}
+				</TableCell>
+				<TableCell
+					style={month_id === 10 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.november)}
+				</TableCell>
+				<TableCell
+					style={month_id === 11 ? { backgroundColor: color } : {}}
+					align="left"
+				>
+					{month_display(bug.december)}
+				</TableCell>
 				<TableCell align="left">{bug.time}</TableCell>
 			</TableRow>
 		));
@@ -100,22 +182,85 @@ class Dashboard extends Component {
 						<TableHead>
 							<TableRow>
 								<TableCell>Name</TableCell>
+								<TableCell>Icon</TableCell>
 								<TableCell align="left">Caught</TableCell>
 								<TableCell align="left">Rarity</TableCell>
-								<TableCell align="left">Price</TableCell>
+								<TableCell align="left">
+									<img className="bells-image" src={bells_image} alt="Price" />
+								</TableCell>
 								<TableCell align="left">Location</TableCell>
-								<TableCell align="left">Jan</TableCell>
-								<TableCell align="left">Feb</TableCell>
-								<TableCell align="left">Mar</TableCell>
-								<TableCell align="left">Apr</TableCell>
-								<TableCell align="left">May</TableCell>
-								<TableCell align="left">June</TableCell>
-								<TableCell align="left">July</TableCell>
-								<TableCell align="left">Aug</TableCell>
-								<TableCell align="left">Sept</TableCell>
-								<TableCell align="left">Oct</TableCell>
-								<TableCell align="left">Nov</TableCell>
-								<TableCell align="left">Dec</TableCell>
+								<TableCell
+									style={month_id === 0 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Jan
+								</TableCell>
+								<TableCell
+									style={month_id === 1 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Feb
+								</TableCell>
+								<TableCell
+									style={month_id === 2 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Mar
+								</TableCell>
+								<TableCell
+									style={month_id === 3 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Apr
+								</TableCell>
+								<TableCell
+									style={month_id === 4 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									May
+								</TableCell>
+								<TableCell
+									style={month_id === 5 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									June
+								</TableCell>
+								<TableCell
+									style={month_id === 6 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									July
+								</TableCell>
+								<TableCell
+									style={month_id === 7 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Aug
+								</TableCell>
+								<TableCell
+									style={month_id === 8 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Sept
+								</TableCell>
+								<TableCell
+									style={month_id === 9 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Oct
+								</TableCell>
+								<TableCell
+									style={month_id === 10 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Nov
+								</TableCell>
+								<TableCell
+									style={month_id === 11 ? { backgroundColor: color } : {}}
+									align="left"
+								>
+									Dec
+								</TableCell>
 								<TableCell align="left">Time</TableCell>
 							</TableRow>
 						</TableHead>
