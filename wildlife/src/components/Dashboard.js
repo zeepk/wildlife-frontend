@@ -6,7 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import bugs from '../data_files/bugs.json';
+import { bugs } from '../data_files/bugs.json';
 class Dashboard extends Component {
 	render() {
 		const bugs_rows = bugs.map((bug) => (
@@ -32,7 +32,7 @@ class Dashboard extends Component {
 								<TableCell align="right">Caught</TableCell>
 							</TableRow>
 						</TableHead>
-						<TableBody></TableBody>
+						<TableBody>{bugs_rows}</TableBody>
 					</Table>
 				</TableContainer>
 			</div>
